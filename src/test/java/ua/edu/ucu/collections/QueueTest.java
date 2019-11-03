@@ -39,7 +39,7 @@ public class QueueTest {
 
     }
 
-    }
+    
 
     @Test(expected = NullPointerException.class)
     public void testError() {
