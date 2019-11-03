@@ -35,7 +35,9 @@ public class QueueTest {
         for(int i=0;i<el.length;i++){
             queue.enqueue(el[i]);
         }
-        assertEquals(4, queue.dequeue());
+        assertEquals(1, queue.dequeue());
+
+    }
 
     }
 
