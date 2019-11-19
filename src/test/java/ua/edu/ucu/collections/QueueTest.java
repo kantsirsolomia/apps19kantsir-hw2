@@ -35,7 +35,7 @@ public class QueueTest {
         for (Object o : el) {
             getQueue().enqueue(o);
         }
-//         assertEquals(1, getQueue().dequeue());
+        assertEquals(1, getQueue().dequeue());
 
     }
 
