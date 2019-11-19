@@ -14,23 +14,23 @@ public class QueueTest {
 
 
     @Test
-    public void peek() {
+    public void testpeek() {
         getQueue().enqueue(5);
-//        getQueue().enqueue(4);
+        getQueue().enqueue(4);
         getQueue().enqueue(3);
         assertEquals(5, getQueue().peek());
     }
 
     @Test
-    public void dequeue() {
+    public void testdequeue() {
         getQueue().enqueue(5);
-//        getQueue().enqueue(4);
+        getQueue().enqueue(4);
         getQueue().enqueue(3);
         assertEquals(5, getQueue().dequeue());
     }
 
     @Test
-    public void enqueue() {
+    public void testenqueue() {
         Object[] el = {1, 2, 3, 4};
         for (Object o : el) {
             getQueue().enqueue(o);
