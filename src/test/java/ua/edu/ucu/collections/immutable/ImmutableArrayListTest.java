@@ -12,7 +12,6 @@ public class ImmutableArrayListTest {
     private static final Object[] fibonacciNum = {1, 2, 3, 5, 8};
     private static final Object[] biggerNums = {1, 2, 3, 5, 8, 13};
     private static final Object[] changedFibonacci = {43, 2, 3, 5, 8, 13};
-    private static final int listSize = 5;
     private static final int magicNumber = 43;
     public static final int fibonacciNumber = 13;
 
@@ -90,7 +89,7 @@ public class ImmutableArrayListTest {
 
     @Test
     public void testSizeMethod() {
-        Assert.assertEquals(listSize, immutableArrayList.size());
+        Assert.assertEquals(5, immutableArrayList.size());
     }
 
     @Test
