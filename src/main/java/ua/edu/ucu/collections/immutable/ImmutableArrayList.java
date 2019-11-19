@@ -2,13 +2,13 @@ package ua.edu.ucu.collections.immutable;
 import java.util.Arrays;
 
 public class ImmutableArrayList implements ImmutableList {
-    public static final int SIZE = 50;
+
     private Object[] arrayOfObjects;
     private int length;
     private String name;
 
     public ImmutableArrayList() {
-        arrayOfObjects = new Object[SIZE];
+        arrayOfObjects = new Object[0];
         this.length = 0;
     }
 
@@ -33,7 +33,8 @@ public class ImmutableArrayList implements ImmutableList {
         else {
             System.arraycopy(arrayOfObjects, 0, newArr, 0, index);
             newArr[index] = e;
-            if ((index + 1) < length) {
+            if (index  < length ) {
+
                 System.arraycopy(arrayOfObjects, index , newArr, index + 1, (length - index) );
             }
         }
@@ -42,7 +43,7 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
 
-    public ImmutableArrayList addAll(Object[] c) {  //перевірити межі вставки
+    public ImmutableArrayList addAll(Object[] c) {
         return addAll(length, c);
     }
 
@@ -54,7 +55,7 @@ public class ImmutableArrayList implements ImmutableList {
         Object[] newArr = new Object[length+c.length];
         System.arraycopy(arrayOfObjects, 0, newArr, 0, index);
         System.arraycopy(c, 0, newArr, index , c.length);
-        if ((index + c.length) < length) {
+        if ((index + c.length) < (length + c.length)) {
             System.arraycopy(arrayOfObjects, index, newArr, (index + c.length) , length - index);
         }
         return new ImmutableArrayList(newArr);
@@ -95,7 +96,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     public int indexOf(Object e) {
         for (int i = 0; i < length; i++) {
-            if (arrayOfObjects[i] == e) {
+            if (arrayOfObjects[i].equals(e)) {
                 return i;
             }
         }
