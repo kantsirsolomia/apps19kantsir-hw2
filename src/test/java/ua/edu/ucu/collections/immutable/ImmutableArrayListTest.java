@@ -42,6 +42,25 @@ public class ImmutableArrayListTest {
     }
 
     @Test
+    public void testAddbyIndex() {
+        Object[] expected  = {1,6, 2, 3, 5, 8, 13};
+        Assert.assertArrayEquals(expected, immutableArrayListBigger.add(1,6).toArray());
+    }
+
+    @Test
+    public void testAddAll() {
+        Object[] expected  = {1,2, 3, 5, 8, 13, 4, 5, 6};
+        Assert.assertArrayEquals(expected, immutableArrayListBigger.addAll( new Object[]{4, 5, 6}).toArray());
+    }
+
+    @Test
+    public void testAddAllbyIndex() {
+        Object[] expected  = {1,4, 5,2, 3, 5, 8, 13};
+        Assert.assertArrayEquals(expected, immutableArrayListBigger.addAll( 1,new Object[]{4, 5}).toArray());
+    }
+
+
+    @Test
     public void testToStringNotEmptyListMethod() {
         Assert.assertEquals(Arrays.toString(fibonacciNum), immutableArrayList.toString());
     }
