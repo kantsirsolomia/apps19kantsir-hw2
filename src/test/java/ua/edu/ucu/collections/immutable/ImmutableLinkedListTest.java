@@ -21,10 +21,10 @@ public class ImmutableLinkedListTest {
 
     @Test
     public void testadd() {
-        Object[] testReturn = new Object[] {2, 3, 4, 51, 2, 3, 5};
+        Object[] testReturn = {2, 3, 4, 51, 2, 3, 5};
         ImmutableLinkedList arr1 = full.add(5);
         assertArrayEquals(testReturn, arr1.toArray());
-        Object[] testReturn2 = new Object[] {5};
+        Object[] testReturn2 = {5};
         ImmutableLinkedList arr2 = empty.add(5);
         assertArrayEquals(testReturn2, arr2.toArray());
 
@@ -32,20 +32,39 @@ public class ImmutableLinkedListTest {
 
     @Test
     public void addFirst() {
-        Object[] testReturn = new Object[] {4, 2, 3, 4, 51, 2, 3};
+        Object[] testReturn = {4, 2, 3, 4, 51, 2, 3};
         ImmutableLinkedList arr1 = full.addFirst(4);
         assertArrayEquals(testReturn, arr1.toArray());
-        Object[] testReturn2 = new Object[] {4};
+        Object[] testReturn2 = {4};
         ImmutableLinkedList arr2 = empty.addFirst(4);
         assertArrayEquals(testReturn2, arr2.toArray());
     }
 
     @Test
+    public void addIndex() {
+//        Object[] testArray = {2, 1, 3, 4, 51, 2, 3};
+//
+        Object[] testReturn = {2,9,  3, 4, 51, 2, 3};
+        ImmutableLinkedList arr1 = full.add(1, 9);
+        assertArrayEquals(testReturn, arr1.toArray());
+
+    }
+
+    @Test
+    public void addAllIndex() {
+        Object[] testReturn = { 2, 3, 4, 5, 6, 4, 51, 2, 3};
+        ImmutableLinkedList arr1 = full.addAll(2, new Object[]{4, 5, 6});
+        assertArrayEquals(testReturn, arr1.toArray());
+
+    }
+
+
+    @Test
     public void addLast() {
-        Object[] testReturn = new Object[] {2, 3, 4, 51, 2, 3,1};
+        Object[] testReturn = {2, 3, 4, 51, 2, 3,1};
         ImmutableLinkedList arr1 = full.addLast(1);
         assertArrayEquals(testReturn, arr1.toArray());
-        Object[] testReturn2 = new Object[] {4};
+        Object[] testReturn2 = {4};
         ImmutableLinkedList arr2 = empty.addLast(4);
         assertArrayEquals(testReturn2, arr2.toArray());
     }
@@ -62,7 +81,7 @@ public class ImmutableLinkedListTest {
 
     @Test
     public void removeFirst() {
-        Object[] testReturn = new Object[] {3, 4, 51, 2, 3};
+        Object[] testReturn = {3, 4, 51, 2, 3};
         ImmutableLinkedList arr1 = full.removeFirst();
     }
 
@@ -79,7 +98,7 @@ public class ImmutableLinkedListTest {
     public void isEmpty() {
         assert empty.isEmpty();
         assert empty.isEmpty() != false;
-        assert full.isEmpty() == false;
+        assert !full.isEmpty();
     }
 
     @Test
@@ -115,7 +134,7 @@ public class ImmutableLinkedListTest {
     @Test
     public void clear() {
         Object[] returTrue = {};
-        assertArrayEquals(full.clear().toArray(), returTrue);
+        assertArrayEquals(returTrue, full.clear().toArray());
     }
 
     @Test
