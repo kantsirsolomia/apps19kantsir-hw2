@@ -26,12 +26,13 @@ public class ImmutableLinkedList implements ImmutableList {
             curNode = curNode.getNext();
         }
     }
-    //checked
+
     @Override
     public ImmutableLinkedList add(Object e) {
         return add(size(), e);
     }
-    //checked
+
+
     @Override
     public ImmutableLinkedList add(int index, Object e) {
         ImmutableLinkedList newInstance = newList();
@@ -51,18 +52,25 @@ public class ImmutableLinkedList implements ImmutableList {
                 curNode = curNode.getNext();
             }
             Node<Object> previous = curNode;
+            Node<Object> oldNext = previous.getNext();
             previous.setNext(new Node<>(e));
+
+
+            Node<Object> a= previous.getNext();
+            a.setNext(oldNext);
+
             newInstance.length++;
         }
         return newInstance;
     }
-    //checked
+
     @Override
     public ImmutableLinkedList addAll(Object[] c) {
         return addAll(size(),c);
 
     }
-    //checked
+
+
     @Override
     public ImmutableLinkedList addAll(int index, Object[] c) { // додає масив елементів починаючи з з
         ImmutableLinkedList newInstance = newList();
@@ -82,49 +90,51 @@ public class ImmutableLinkedList implements ImmutableList {
             }
         }
         else {
-
             int i = 0;
             while (i != index - 1) {
                 curNode = curNode.getNext();
                 i++;
             }
+            Node<Object> oldNext = curNode.getNext();
             int k = 0;
             while (k != c.length) {
                 curNode.setNext(new Node(c[k]));
                 curNode = curNode.getNext();
                 k++;
             }
+            Node<Object> a = curNode.getNext();
+            curNode.setNext(oldNext);
             newInstance.length += c.length;
         }
         return newInstance;
     }
 
 
-    //checked
+
     public ImmutableLinkedList addFirst(Object e) {
         return add(0, e);
     }
-    //checked
+
     public ImmutableLinkedList addLast(Object e) {
         return add(e);
     }
-    //checked
+
     public Object getFirst() {
         return get(0);
     }
-    //checked
+
     public Object getLast() {
         return get(size() - 1);
     }
-    //checked
+
     public ImmutableLinkedList removeFirst() {
         return remove(0);
     }
-    //checked
+
     public ImmutableLinkedList removeLast() {
         return remove(size() - 1);
     }
-    //checked
+
     public int size() {
         int listSize = 0;
         Node<Object> current = head;
@@ -134,12 +144,12 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         return listSize;
     }
-    //checked
+
     public boolean isEmpty() {
         return head == null;
     }
 
-    //checked
+
     public Object get(int index) {    //повертає елемент за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
         int currentIndex = 0;
         Node<Object> cur = head;
@@ -152,7 +162,7 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         throw new IllegalArgumentException();
     }
-    //checked
+
     @Override
     public ImmutableLinkedList remove(int index) {
         ImmutableLinkedList newInst = newList();
@@ -174,7 +184,7 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         throw new IllegalArgumentException();
     }
-    //checked
+
     @Override
     public ImmutableLinkedList set(int index, Object e) {
         if (index >= size()) {
@@ -192,12 +202,12 @@ public class ImmutableLinkedList implements ImmutableList {
         return newInst;
     }
 
-    //checked
+
     public int indexOf(Object e) { //шукає індекс елемента (повертає індекс першого який знайшов, або -1 у випадку відсутності)
         int curIndex = 0;
         Node<Object> curNode = head;
         while (head != null) {
-            if (curNode.getData() == e) {
+            if (curNode.getData().equals(e)) {
                 return curIndex;
             } else {
                 curIndex++;
@@ -206,12 +216,12 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         return -1;
     }
-    //checked
+
     public ImmutableLinkedList clear() {
         return new ImmutableLinkedList();
     }
 
-    //checked
+
     public ImmutableLinkedList newList() {
 
         ImmutableLinkedList newList = new ImmutableLinkedList();
@@ -230,7 +240,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
         return newList;
     }
-    //checked
+
     public Object[] toArray() {
         Object[] arr = new Object[size()];
         Node<Object> curElement = head;
@@ -242,7 +252,7 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         return arr;
     }
-    //checked
+
     public String toString() {
         String strList = "";
         Node<Object> current = head;
