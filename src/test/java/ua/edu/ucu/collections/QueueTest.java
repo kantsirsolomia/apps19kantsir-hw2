@@ -5,45 +5,51 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class QueueTest {
-    public Queue queue;
+    private Queue queue;
 
     @Before
     public void setUp(){
-        queue = new Queue();
+        setQueue(new Queue());
     }
 
 
     @Test
     public void peek() {
-        queue.enqueue(5);
-        queue.enqueue(4);
-        queue.enqueue(3);
-        assertEquals(5, queue.peek());
+        getQueue().enqueue(5);
+        getQueue().enqueue(4);
+        getQueue().enqueue(3);
+        assertEquals(5, getQueue().peek());
     }
 
     @Test
     public void dequeue() {
-        queue.enqueue(5);
-        queue.enqueue(4);
-        queue.enqueue(3);
-        assertEquals(5, queue.dequeue());
+        getQueue().enqueue(5);
+        getQueue().enqueue(4);
+        getQueue().enqueue(3);
+        assertEquals(5, getQueue().dequeue());
     }
 
     @Test
     public void enqueue() {
         Object[] el = {1, 2, 3, 4};
-        for(int i=0;i<el.length;i++){
-            queue.enqueue(el[i]);
+        for (Object o : el) {
+            getQueue().enqueue(o);
         }
-        assertEquals(1, queue.dequeue());
+        assertEquals(1, getQueue().dequeue());
 
     }
 
-    
-
     @Test(expected = NullPointerException.class)
     public void testError() {
-        queue.dequeue();
-        queue.peek();
+        getQueue().dequeue();
+        getQueue().peek();
+    }
+
+    public Queue getQueue() {
+        return queue;
+    }
+
+    public void setQueue(Queue queue) {
+        this.queue = queue;
     }
 }
