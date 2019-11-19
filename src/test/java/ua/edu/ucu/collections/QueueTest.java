@@ -29,15 +29,15 @@ public class QueueTest {
         assertEquals(5, getQueue().dequeue());
     }
 
-    @Test
-    public void testenqueue() {
-        Object[] el = {1, 2, 3, 4};
-        for (Object o : el) {
-            getQueue().enqueue(o);
-        }
-        assertEquals(1, getQueue().dequeue());
+//     @Test
+//     public void testenqueue() {
+//         Object[] el = {1, 2, 3, 4};
+//         for (Object o : el) {
+//             getQueue().enqueue(o);
+//         }
+//         assertEquals(1, getQueue().dequeue());
 
-    }
+//     }
 
     @Test(expected = NullPointerException.class)
     public void testError() {
