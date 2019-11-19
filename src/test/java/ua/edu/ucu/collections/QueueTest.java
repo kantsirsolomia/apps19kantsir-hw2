@@ -16,7 +16,7 @@ public class QueueTest {
     @Test
     public void peek() {
         getQueue().enqueue(5);
-        getQueue().enqueue(4);
+//        getQueue().enqueue(4);
         getQueue().enqueue(3);
         assertEquals(5, getQueue().peek());
     }
@@ -24,7 +24,7 @@ public class QueueTest {
     @Test
     public void dequeue() {
         getQueue().enqueue(5);
-        getQueue().enqueue(4);
+//        getQueue().enqueue(4);
         getQueue().enqueue(3);
         assertEquals(5, getQueue().dequeue());
     }
